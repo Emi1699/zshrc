@@ -8,6 +8,10 @@ alias zshrc='open ~/.zshrc'
 alias szshrc='source ~/.zshrc'
 alias sleepmusic='cd ~/Projects/Python && p sleep.py'
 
+alias refreshfinder='killall Finder /System/Library/CoreServices/Finder.app'
+alias showall='defaults write com.apple.finder AppleShowAllFiles YES && refreshfinder'
+alias dontshowall='defaults write com.apple.finder AppleShowAllFiles NO && refreshfinder'
+
 
 # git aliases
 alias gs='git status'
