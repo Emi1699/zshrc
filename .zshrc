@@ -29,15 +29,30 @@ downloadsong() {
     cd ~/Projects/Python/YT_to_MP3
     
     URL=$(pbpaste)  # Use `xclip -o` on Linux instead of `pbpaste`
-    
+
     if [[ ! "$URL" =~ ^https://www.youtube.com/watch? ]]; then
         echo -e "\033[0;31mMake sure you have copied the YOUTUBE link\033[0m"  # Red error message
         return 1
     fi
+
+    # Check for optional album argument
+    ALBUM=""
     
-    p yt_to_mp3.py "$URL"
+    # If custom album is provided as an argument
+    if [[ ! -z "$1" ]]; then
+        ALBUM="$1"
+    fi
+    
+    # Run the Python script with album if provided
+    if [[ ! -z "$ALBUM" ]]; then
+        p yt_to_mp3.py "$URL" --album "$ALBUM"
+    else
+        p yt_to_mp3.py "$URL"
+    fi
+
     envout
 }
+
 
 alias buildanddeploy='npm run build && firebase deploy'
 
