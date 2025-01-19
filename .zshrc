@@ -45,9 +45,9 @@ downloadsong() {
     
     # Run the Python script with album if provided
     if [[ ! -z "$ALBUM" ]]; then
-        p yt_to_mp3.py "$URL" --album "$ALBUM"
+        p yt_to_MusicApp.py "$URL" --album "$ALBUM"
     else
-        p yt_to_mp3.py "$URL"
+        p yt_to_MusicApp.py "$URL"
     fi
 
     envout
